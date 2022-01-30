@@ -1,38 +1,257 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Karla:wght@400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1, h2, h3, h4, h5, h6, p {
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button,
+button:focus {
+  border: none;
+  outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  width: 550px;
+  height: 550px;
+  border: 1px solid #4D5B9E;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.app::-webkit-scrollbar {
+  width: 10px;
+}
+.app::-webkit-scrollbar-track {
+  background-color: #d1d1d4;
+}
+.app::-webkit-scrollbar-thumb {
+  background-color: #293264;
+}
+
+
+.landing {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: 'Karla', sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.landing__title {
+  font-size: 31.25px;
+  font-weight: 700;
+  color: #293264;
 }
 
-@keyframes App-logo-spin {
+.landing__desc {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 15px;
+  color: #293264;
+}
+
+.landing__form {
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 0 75px;
+  display: flex;
+  flex-direction: column;
+  color: #293264;
+  font-weight: 500;
+}
+
+.landing input::placeholder {
+  color: #293264;
+}
+
+.landing input:focus,
+.landing select:focus {
+  outline: none;
+}
+
+.landing__form > * {
+  text-align: center;
+  width: 193px;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 6px;
+  color: #293264;
+  border: 1px solid #293264;
+}
+
+.landing--btn {
+  height: 52px;
+  width: 193px;
+  left: 179px;
+  top: 314px;
+  margin-bottom: -30px;
+  border-radius: 15px;
+  background: #4D5B9E;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  border: none;
+}
+
+.landing--btn:focus {
+  border: none;
+  outline: none;
+}
+
+.quiz {
+  padding: 40px 75px 0;
+}
+
+.quiz__result {
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #293264;
+}
+
+.quiz--btn {
+  display: block;
+  margin: 25px auto;
+  height: 35px;
+  width: 120px;
+  border-radius: 10px;
+  background: #4D5B9E;
+  color: #ffffff;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 12px;
+}
+
+.question__title {
+  font-family: Karla;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #293264;
+}
+
+.question__answers {
+  display: flex;
+}
+
+.question__answers > span {
+  margin: 12px 0 15px;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: 0em;
+  text-align: center;
+  min-width: 65.92px;
+  border-radius: 8px;
+  margin-right: 12.71px;
+  padding: 5px;
+  border: 0.79px solid #4D5B9E;
+  color: #293264;
+  cursor: pointer;
+}
+
+.question__answers span.active {
+  background: #D6DBF5;
+  border-color: #ffffff;
+}
+.question__answers span.submited {
+  opacity: 0.5;
+}
+.question__answers span.wrong {
+  background: #F8BCBC;
+  border: none;
+}
+.question__answers span.correct {
+  background: #94D7A2;
+  border: none;
+  opacity: 1;
+}
+
+
+.question--line {
+  border: 0.79px solid #DBDEF0;
+  margin-bottom: 15px;
+}
+
+.loading {
+  height: 550px;
+  display: grid;
+  place-items: center;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  border-radius: 50%;
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent #717aaa #717aaa #717aaa;
+  animation-name: spinning;
+  animation-duration: 500ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+
+.spinner::before {
+  content: "";
+  width: 54px;
+  height: 54px;
+  position: absolute;
+  border-radius: 50%;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #4D5B9E transparent #4D5B9E #4D5B9E;
+  top: -10px;
+  left: -10px;
+}
+.spinner::after {
+  content: "";
+  width: 66px;
+  height: 66px;
+  position: absolute;
+  border-radius: 50%;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #293264 #293264 #293264 transparent;
+  top: -16px;
+  left: -16px;
+}
+
+@keyframes spinning {
   from {
-    transform: rotate(0deg);
+  transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+  transform: rotate(360deg);
   }
 }
