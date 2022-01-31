@@ -32,15 +32,11 @@ const Landing = (props) => {
         <h1 className='landing__title'>Quizzical</h1>
         <p className='landing__desc'>Choose category, Questions amount <br/>and start your quiz</p>
         <div className='landing__form'>
-          <input name='amount' placeholder='Numbers of questions' type="number" min="1" max="50" onChange={(e) => setAmount(e.target.value)}  />
+          <input name='amount' placeholder='Questions amount (1-50)' type="number" min="1" max="50" onChange={(e) => setAmount(e.target.value)}  />
           <select name='category' onChange={(e) => setCategory(e.target.value)}>
             <option value="" selected disabled hidden>All categories </option>
             {options}
           </select>
-          {/* <select name='boolean' onChange={(e) => fieldValue(e)} >
-            <option>Multiple choice</option>
-            <option>True / False</option>
-          </select> */}
         </div>
         <button type='submit' className='landing--btn' onClick={props.startQuiz} >Start quiz</button>
       </div>

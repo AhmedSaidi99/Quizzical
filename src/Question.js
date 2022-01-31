@@ -5,7 +5,6 @@ const Question = (props) => {
   const { question, correctAnswer, incorrectAnswers, isSubmited } = props;
   const [chosen, setChosen] = useState(localStorage.getItem(question) || '')
   const [allAnswers, setAllAnswers] = useState([])
-  const [count, setCount] = useState(0)
 
 
 
@@ -44,12 +43,8 @@ const Question = (props) => {
       <span 
         key={answer}
         className={`submited 
-        ${ chosen === answer && correctAnswer === answer ? 
-          'correct' :
-          chosen === answer && incorrectAnswers.some(ans => ans === chosen) ?
-          'wrong' :
-          ''
-        }
+        ${ correctAnswer === answer ? 'correct' : ""}
+        ${  chosen === answer && incorrectAnswers.some(ans => ans === chosen) ? 'wrong' : ''}
         `}
       >
         {decode(answer)}

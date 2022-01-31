@@ -44,6 +44,8 @@ function App() {
     setIsPending(true)
   }
 
+  
+
 
   function checkAnswers() {
     if (isSubmited) {
@@ -73,16 +75,18 @@ function App() {
 
   return (
     <div className="app">
+      <div className='blob-top'></div>
       {!started && <Landing startQuiz={startQuiz}/>}
       {isPending && <div className='loading'><div class="spinner"></div></div>}
       {
-      started && 
-      <div className='quiz'>
+        started && 
+        <div className='quiz'>
         <div className='quiz__questions'>{questionsBodies}</div>
         {isSubmited && <p className='quiz__result'>You scored {score}/{localStorage.getItem('amount')} correct answers</p>}
         {!isPending && <button className='quiz--btn' onClick={checkAnswers}>{isSubmited ? 'Play again' : 'Check answers'}</button>}
       </div>
       }
+      <div className='blob-bottom'></div>
     </div>
   );
 }

@@ -20,12 +20,14 @@ button:focus {
 .app {
   width: 550px;
   height: 550px;
+  background: url(./background.svg);
   border: 1px solid #4D5B9E;
   border-radius: 5px;
   position: relative;
   overflow: hidden;
   overflow-y: scroll;
 }
+
 
 .app::-webkit-scrollbar {
   width: 10px;
@@ -116,6 +118,8 @@ button:focus {
 
 .quiz {
   padding: 40px 75px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .quiz__result {
